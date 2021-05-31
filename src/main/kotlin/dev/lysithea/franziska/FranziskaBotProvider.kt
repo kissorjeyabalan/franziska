@@ -11,6 +11,7 @@ import dev.kord.gateway.Intents
 import dev.kord.gateway.PrivilegedIntent
 import dev.lysithea.franziska.core.config.Config
 import dev.lysithea.franziska.core.database.DataService
+import dev.lysithea.franziska.core.database.entities.FranziskaSetting
 import io.ktor.client.*
 import io.ktor.client.engine.cio.*
 import kotlinx.coroutines.Dispatchers
@@ -30,11 +31,6 @@ class FranziskaBotProvider : FranziskaBot, KoinComponent {
     private lateinit var kord: Kord
     private val config by inject<Config>()
     private var isInitialized = false
-
-
-    init {
-        kord.listeners()
-    }
 
     private fun Kord.listeners() {
         onReady()
@@ -58,14 +54,16 @@ class FranziskaBotProvider : FranziskaBot, KoinComponent {
     }
 
     suspend fun start() {
-        log.info { "Starting Franziska" }
-
-        registerCommands()
-
         kord = Kord(config.franziska.token) {
             httpClient = HttpClient(CIO)
             intents - Intents.nonPrivileged + Intent.GuildMembers
         }
+
+        kord.listeners()
+
+        log.info { "Starting Franziska" }
+
+        registerCommands()
 
         log.info { "Logging in" }
         kord.login {
@@ -74,6 +72,6 @@ class FranziskaBotProvider : FranziskaBot, KoinComponent {
     }
 
     private suspend fun registerCommands() {
-        
+
     }
 }

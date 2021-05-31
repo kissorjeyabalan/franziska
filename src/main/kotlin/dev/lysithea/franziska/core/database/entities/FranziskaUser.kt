@@ -2,7 +2,9 @@ package dev.lysithea.franziska.core.database.entities
 
 import dev.kord.common.entity.Snowflake
 import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class FranziskaUser(
     @SerialName("discord_id") val discordId: Snowflake,
     @SerialName("character_name") val characterName: String,

@@ -14,5 +14,5 @@ suspend fun main(vararg args: String) {
     val rootLogger = LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME) as Logger
     rootLogger.level = Level.DEBUG
 
-    FranziskaBotProvider().initialize()
+    FranziskaBotProvider().start()
 }
