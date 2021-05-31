@@ -27,7 +27,7 @@ dependencies {
     implementation(platform("io.ktor:ktor-bom:1.5.3"))
 
     // Logging
-    implementation("io.github.microutils", "kotlin-logging-jvm", "2.0.6")
+    implementation("io.github.microutils", "kotlin-logging", "1.12.5")
     implementation("org.slf4j", "slf4j-api", "2.0.0alpha1")
     implementation("ch.qos.logback", "logback-classic", "1.3.0-alpha5")
 
@@ -71,5 +71,5 @@ tasks.test {
 }
 
 tasks.withType<KotlinCompile>() {
-    kotlinOptions.jvmTarget = "11"
+    kotlinOptions.jvmTarget = "1.8"
 }
