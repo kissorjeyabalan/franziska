@@ -27,6 +27,7 @@ dependencies {
     implementation(platform("io.ktor:ktor-bom:1.5.3"))
 
     implementation("dev.kord.x:emoji:0.5.0-SNAPSHOT")
+    implementation("dev.kord.cache:cache-map:0.3.0")
 
     // Logging
     implementation("io.github.microutils", "kotlin-logging", "1.12.5")
@@ -46,6 +47,8 @@ dependencies {
     // Utility
     implementation("net.sf.trove4j", "trove4j", "3.0.3")
     implementation("io.insert-koin", "koin-core", "3.0.2")
+    implementation("io.projectreactor", "reactor-core", "3.4.4")
+    implementation("io.projectreactor.kotlin", "reactor-kotlin-extensions", "1.1.3")
 
     // Configuration
     implementation("com.fasterxml.jackson.module", "jackson-module-kotlin", "2.12.+")

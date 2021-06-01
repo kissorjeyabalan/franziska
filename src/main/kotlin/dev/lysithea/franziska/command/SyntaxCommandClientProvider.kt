@@ -54,9 +54,9 @@ class SyntaxCommandClientProvider(
             val command = resolveCommand(commandItems[0].removePrefix(guildSettings.prefix)) ?: return
             when (permissionHandler.hasAccess(command.permission, member)) {
                 PermissionState.ACCEPTED -> {
-                    if (!command.usageArea.matches(event)) return handleIncorrectUsageArea(event.message.channel.asChannel())
+                    if (!command.usageArea.matches(event)) return handleIncorrectUsageArea(event.message.channel)
                     val args = commandItems.drop(1)
-                    val context = SyntaxContext(franziska, guildSettings.prefix, command, args, member, event)
+                    val context = SyntaxContext(franziska, guildSettings.prefix, permissionHandler, command, args, member, event)
                     processCommand(command, context)
                 }
                 PermissionState.DECLINED -> return handleInsufficientPermission(command.permission, event.message.channel.asChannel())
