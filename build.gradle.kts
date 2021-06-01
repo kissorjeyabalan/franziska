@@ -26,6 +26,8 @@ dependencies {
     implementation("io.ktor", "ktor-client-serialization-jvm")
     implementation(platform("io.ktor:ktor-bom:1.5.3"))
 
+    implementation("dev.kord.x:emoji:0.5.0-SNAPSHOT")
+
     // Logging
     implementation("io.github.microutils", "kotlin-logging", "1.12.5")
     implementation("org.slf4j", "slf4j-api", "2.0.0alpha1")
@@ -62,6 +64,10 @@ dependencies {
                         "-Xopt-in=dev.kord.common.annotation.KordPreview" +
                         "-Xopt-in=dev.kord.common.annotation.KordExperimental"
             }
+        }
+
+        installDist {
+            destinationDir = buildDir.resolve("libs/install")
         }
     }
 }

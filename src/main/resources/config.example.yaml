@@ -1,5 +1,7 @@
 franziska:
   token: <discord-bot-token>
+  status: <presence-message>
+  owner: <bot-owner-snowflake>
 mongo:
   host: <mongo-host>
   port: <mongo-port>
