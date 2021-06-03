@@ -8,5 +8,6 @@ import dev.kord.common.Color
  * @constructor Create empty Colors
  */
 object Colors {
+    val LIGHT_GREEN: Color = Color(46, 204, 113)
     val LIGHT_RED: Color = Color(231, 76, 60)
 }

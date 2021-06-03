@@ -1,10 +1,11 @@
 package dev.lysithea.franziska.commands.general
 
 import dev.lysithea.franziska.core.command.CommandCategory
-import dev.lysithea.franziska.commands.SyntaxContext
+import dev.lysithea.franziska.core.command.SyntaxContext
 import dev.lysithea.franziska.core.command.abstractions.AbstractSyntaxCommand
 import dev.lysithea.franziska.core.permission.PermissionLevel
 import dev.lysithea.franziska.core.permission.UsageArea
+import kotlinx.coroutines.launch
 
 class EchoSyntaxCommand : AbstractSyntaxCommand() {
     override val name = "echo"

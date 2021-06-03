@@ -8,6 +8,7 @@ import dev.kord.core.on
 import dev.kord.gateway.Intent
 import dev.kord.gateway.Intents
 import dev.kord.gateway.PrivilegedIntent
+import dev.lysithea.franziska.commands.administration.settings.SettingsSyntaxCommand
 import dev.lysithea.franziska.core.command.SyntaxCommandClientProvider
 import dev.lysithea.franziska.commands.games.ConnectFourSyntaxCommand
 import dev.lysithea.franziska.commands.general.EchoSyntaxCommand
@@ -80,6 +81,10 @@ class FranziskaBotProvider : FranziskaBot, KoinComponent {
 
 
     private fun registerCommands() {
-        syntaxClient.registerCommands(EchoSyntaxCommand(), ConnectFourSyntaxCommand())
+        syntaxClient.registerCommands(
+            EchoSyntaxCommand(),
+            ConnectFourSyntaxCommand(),
+            SettingsSyntaxCommand()
+        )
     }
 }

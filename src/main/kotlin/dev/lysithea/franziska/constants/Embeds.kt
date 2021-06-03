@@ -24,6 +24,13 @@ object Embeds {
             color = Colors.LIGHT_RED
         }.apply(builder)
 
+    inline fun success(title: String, description: String?, builder: EmbedCreator = {}): EmbedBuilder =
+        EmbedBuilder().apply {
+            title(Emojis.whiteCheckMark.unicode, title)
+            this.description = description
+            color = Colors.LIGHT_GREEN
+        }.apply(builder)
+
     @PublishedApi
     internal fun EmbedBuilder.title(emoji: String, title: String) {
         this.title = "$emoji $title"

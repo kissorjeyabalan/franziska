@@ -12,10 +12,11 @@ import org.slf4j.LoggerFactory
 suspend fun main(vararg args: String) {
     startKoin {
         modules(franziskaModules)
+
     }
 
     val rootLogger = LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME) as Logger
     rootLogger.level = Level.DEBUG
 
-    FranziskaBotProvider().start(false)
+    FranziskaBotProvider().start()
 }
