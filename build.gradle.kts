@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     kotlin("jvm") version "1.5.10"
     kotlin("plugin.serialization") version "1.5.10"
+    id("org.jetbrains.dokka") version "1.4.32"
     application
 }
 
@@ -27,7 +28,6 @@ dependencies {
     implementation(platform("io.ktor:ktor-bom:1.5.3"))
 
     implementation("dev.kord.x:emoji:0.5.0-SNAPSHOT")
-    implementation("dev.kord.cache:cache-map:0.3.0")
 
     // Logging
     implementation("io.github.microutils", "kotlin-logging", "1.12.5")

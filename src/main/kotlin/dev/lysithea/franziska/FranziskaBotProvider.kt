@@ -32,7 +32,6 @@ class FranziskaBotProvider : FranziskaBot, KoinComponent {
 
     private lateinit var kord: Kord
     private val config by inject<Config>()
-    override val database by inject<DataService>()
 
     private val syntaxClient =
         SyntaxCommandClientProvider(this, PermissionHandlerProvider())

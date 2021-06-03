@@ -1,12 +1,14 @@
 package dev.lysithea.franziska.command
 
-import dev.kord.core.event.message.MessageCreateEvent
 import dev.lysithea.franziska.command.interfaces.ErrorHandler
 import dev.lysithea.franziska.command.interfaces.FranziskaContext
 import kotlinx.coroutines.launch
 import mu.KotlinLogging
 import kotlin.coroutines.CoroutineContext
 
+/**
+ * Implementation of [ErrorHandler] that does nothing worthwhile.
+ */
 class DebugErrorHandler<T : FranziskaContext> : ErrorHandler<T> {
     private val log = KotlinLogging.logger {}
     override fun handleException(

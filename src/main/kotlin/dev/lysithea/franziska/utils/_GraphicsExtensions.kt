@@ -14,6 +14,10 @@ import java.io.ByteArrayOutputStream
 import java.io.InputStream
 import javax.imageio.ImageIO
 
+/**
+ * Graphics related extensions.
+ */
+
 fun BufferedImage.getAverageColour(weight: String = "alpha"): Color = this.raster.let { raster ->
     val pixels = raster.getPixels(0, 0, raster.width, raster.height, null as IntArray?)
     var red = 0.0

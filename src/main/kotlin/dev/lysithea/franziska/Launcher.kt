@@ -6,6 +6,9 @@ import dev.lysithea.franziska.di.franziskaModules
 import org.koin.core.context.startKoin
 import org.slf4j.LoggerFactory
 
+/**
+ * Launcher!
+ */
 suspend fun main(vararg args: String) {
     startKoin {
         modules(franziskaModules)

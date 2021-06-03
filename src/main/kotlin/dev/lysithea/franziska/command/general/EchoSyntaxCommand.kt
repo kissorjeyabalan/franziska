@@ -19,7 +19,7 @@ class EchoSyntaxCommand : AbstractSyntaxCommand() {
             context.event.message.channel.createMessage(
                 context.event.message
                     .content.removePrefix(
-                        "${context.prefix}$name"
+                        "${context.guildSettings.prefix}$name"
                     )
             )
         }

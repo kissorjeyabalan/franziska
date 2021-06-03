@@ -6,7 +6,10 @@ import dev.lysithea.franziska.core.config.Config
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-
+/**
+ * Implementation of [PermissionHandler].
+ *
+ */
 class PermissionHandlerProvider : PermissionHandler, KoinComponent {
     private val config by inject<Config>()
 
