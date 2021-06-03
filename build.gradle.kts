@@ -79,6 +79,25 @@ tasks.test {
     useJUnit()
 }
 
+tasks.dokkaHtml.configure {
+    this.outputDirectory.set(file("${project.projectDir}/dokka/franziska/"))
+
+    dokkaSourceSets {
+        configureEach {
+            platform.set(org.jetbrains.dokka.Platform.jvm)
+
+            sourceLink {
+                localDirectory.set(file("src/main/kotlin"))
+                remoteUrl.set(uri("https://github.com/kissorjeyabalan/franziska/tree/master/src/main/kotlin/").toURL())
+
+                remoteLineSuffix.set("#L")
+            }
+
+            jdkVersion.set(11)
+        }
+    }
+}
+
 tasks.withType<KotlinCompile>() {
-    kotlinOptions.jvmTarget = "1.8"
+    kotlinOptions.jvmTarget = "11"
 }

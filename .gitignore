@@ -1,6 +1,7 @@
 ### Project specific
 config.yaml
 build/
+dokka/
 ### Kotlin template
 # Compiled class file
 *.class
