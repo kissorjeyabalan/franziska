@@ -20,19 +20,19 @@ class FranziskaSettingRepositoryProvider(
     /**
      * Map of currently loaded settings.
      */
-    private val cache = ConcurrentHashMap<Snowflake, FranziskaSetting>()
+    private val cache = ConcurrentHashMap<String, FranziskaSetting>()
 
     override suspend fun getOrDefault(guildId: Snowflake?): FranziskaSetting {
-        if (guildId == null) return FranziskaSetting(guildId = Snowflake.min)
-        val cached = cache[guildId]
+        if (guildId == null) return FranziskaSetting(guildId = "")
+        val cached = cache[guildId.asString]
         if (cached != null) return cached
 
         val settings = database
             .getCollection<FranziskaSetting>("settings")
-            .findOne(FranziskaSetting::guildId eq guildId)
-            ?: FranziskaSetting(guildId = guildId)
+            .findOne(FranziskaSetting::guildId eq guildId.asString)
+            ?: FranziskaSetting(guildId = guildId.asString)
 
-        cache[guildId] = settings
+        cache[guildId.asString] = settings
         return settings
     }
 

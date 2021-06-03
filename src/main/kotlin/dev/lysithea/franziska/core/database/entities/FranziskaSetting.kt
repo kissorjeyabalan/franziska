@@ -5,6 +5,7 @@ import dev.lysithea.franziska.core.command.abstractions.AbstractSyntaxCommand
 import dev.lysithea.franziska.core.permission.PermissionLevel
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import org.bson.codecs.pojo.annotations.BsonId
 
 /**
  * Representation of guild configurations.
@@ -16,8 +17,8 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class FranziskaSetting(
-    @SerialName("guild_id") val guildId: Snowflake,
+    @SerialName("guild_id") val guildId: String,
     @SerialName("enabled") val enabled: Boolean = true,
     @SerialName("prefix") val prefix: String = "%",
-    @SerialName("permissions") val permissions: Map<Snowflake, PermissionLevel> = mapOf()
+    @SerialName("permissions") val permissions: Map<String, PermissionLevel> = mapOf()
 )
