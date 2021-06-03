@@ -1,7 +1,7 @@
 package dev.lysithea.franziska.core.database.entities
 
 import dev.kord.common.entity.Snowflake
-import dev.lysithea.franziska.command.abstractions.AbstractSyntaxCommand
+import dev.lysithea.franziska.core.command.abstractions.AbstractSyntaxCommand
 import dev.lysithea.franziska.core.permission.PermissionLevel
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

@@ -1,9 +1,9 @@
-package dev.lysithea.franziska.command.interfaces
+package dev.lysithea.franziska.core.command.interfaces
 
 import dev.kord.core.Kord
 import dev.kord.core.event.interaction.InteractionCreateEvent
 import dev.kord.core.event.message.MessageCreateEvent
-import dev.lysithea.franziska.command.abstractions.AbstractCommand
+import dev.lysithea.franziska.core.command.abstractions.AbstractCommand
 import dev.lysithea.franziska.core.permission.PermissionHandler
 import kotlinx.coroutines.Job
 import dev.kord.core.on

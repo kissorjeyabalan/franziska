@@ -1,6 +1,6 @@
-package dev.lysithea.franziska.command.interfaces
+package dev.lysithea.franziska.core.command.interfaces
 
-import dev.lysithea.franziska.command.abstractions.AbstractCommand
+import dev.lysithea.franziska.core.command.abstractions.AbstractCommand
 
 /**
  * Registry of [AbstractCommand]s.

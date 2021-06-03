@@ -1,6 +1,6 @@
-package dev.lysithea.franziska.command.abstractions
+package dev.lysithea.franziska.core.command.abstractions
 
-import dev.lysithea.franziska.command.CommandCategory
+import dev.lysithea.franziska.core.command.CommandCategory
 import dev.lysithea.franziska.core.permission.PermissionLevel
 import dev.lysithea.franziska.core.permission.UsageArea
 

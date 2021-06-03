@@ -1,7 +1,7 @@
-package dev.lysithea.franziska.command
+package dev.lysithea.franziska.core.command
 
-import dev.lysithea.franziska.command.interfaces.ErrorHandler
-import dev.lysithea.franziska.command.interfaces.FranziskaContext
+import dev.lysithea.franziska.core.command.interfaces.ErrorHandler
+import dev.lysithea.franziska.core.command.interfaces.FranziskaContext
 import kotlinx.coroutines.launch
 import mu.KotlinLogging
 import kotlin.coroutines.CoroutineContext

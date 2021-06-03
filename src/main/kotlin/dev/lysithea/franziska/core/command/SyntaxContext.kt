@@ -1,15 +1,14 @@
-package dev.lysithea.franziska.command
+package dev.lysithea.franziska.core.command
 
 import dev.kord.core.behavior.channel.MessageChannelBehavior
 import dev.kord.core.entity.Member
 import dev.kord.core.entity.Message
 import dev.kord.core.event.message.MessageCreateEvent
 import dev.lysithea.franziska.FranziskaBot
-import dev.lysithea.franziska.command.abstractions.AbstractCommand
-import dev.lysithea.franziska.command.interfaces.FranziskaContext
+import dev.lysithea.franziska.core.command.interfaces.FranziskaContext
 import dev.lysithea.franziska.core.database.entities.FranziskaSetting
 import dev.lysithea.franziska.core.permission.PermissionHandler
-import dev.lysithea.franziska.command.abstractions.AbstractSyntaxCommand
+import dev.lysithea.franziska.core.command.abstractions.AbstractSyntaxCommand
 
 /**
  * Context of a [AbstractSyntaxCommand] execution.

@@ -12,7 +12,7 @@ import org.litote.kmongo.reactivestreams.KMongo
 /**
  * [DataService] implementation using [CoroutineDatabase].
  */
-class MongoService() : DataService, KoinComponent {
+class MongoService : DataService, KoinComponent {
     private val config by inject<Config>()
     private val database: CoroutineDatabase =
         KMongo.createClient(config.mongo.connectionString).coroutine.getDatabase(config.mongo.database)

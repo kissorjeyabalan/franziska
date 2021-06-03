@@ -1,7 +1,7 @@
-package dev.lysithea.franziska.command.abstractions
+package dev.lysithea.franziska.core.command.abstractions
 
-import dev.lysithea.franziska.command.SyntaxContext
-import dev.lysithea.franziska.command.interfaces.CommandRegistry
+import dev.lysithea.franziska.commands.SyntaxContext
+import dev.lysithea.franziska.core.command.interfaces.CommandRegistry
 
 /**
  * Abstract implementation of a command that is accepted via text messages.

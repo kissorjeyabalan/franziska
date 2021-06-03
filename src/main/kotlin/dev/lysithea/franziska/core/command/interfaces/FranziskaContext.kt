@@ -1,4 +1,4 @@
-package dev.lysithea.franziska.command.interfaces
+package dev.lysithea.franziska.core.command.interfaces
 
 import dev.kord.core.behavior.channel.ChannelBehavior
 import dev.kord.core.entity.Message

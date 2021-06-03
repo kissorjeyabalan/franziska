@@ -1,3 +1,4 @@
+@file:Suppress("unused")
 package dev.lysithea.franziska.core.permission
 
 import dev.kord.core.entity.channel.DmChannel

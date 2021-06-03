@@ -1,3 +1,4 @@
+@file:Suppress("unused")
 package dev.lysithea.franziska.utils
 
 import java.util.concurrent.ExecutorService

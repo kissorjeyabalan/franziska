@@ -1,6 +1,8 @@
-package dev.lysithea.franziska.command
+@file:Suppress("unused")
 
-import dev.lysithea.franziska.command.abstractions.AbstractCommand
+package dev.lysithea.franziska.core.command
+
+import dev.lysithea.franziska.core.command.abstractions.AbstractCommand
 
 /**
  * Available command groups for an [AbstractCommand]

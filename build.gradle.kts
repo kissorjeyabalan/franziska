@@ -98,6 +98,6 @@ tasks.dokkaHtml.configure {
     }
 }
 
-tasks.withType<KotlinCompile>() {
+tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "11"
 }

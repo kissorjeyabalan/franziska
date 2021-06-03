@@ -1,4 +1,4 @@
-package dev.lysithea.franziska.command.interfaces
+package dev.lysithea.franziska.core.command.interfaces
 
 import kotlin.coroutines.CoroutineContext
 

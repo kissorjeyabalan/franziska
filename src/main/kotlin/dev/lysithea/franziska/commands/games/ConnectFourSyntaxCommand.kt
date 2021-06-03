@@ -1,19 +1,16 @@
-package dev.lysithea.franziska.command.games
+@file:Suppress("unused")
+package dev.lysithea.franziska.commands.games
 
-import dev.kord.common.entity.Permission
-import dev.kord.common.entity.Snowflake
 import dev.kord.core.behavior.channel.MessageChannelBehavior
 import dev.kord.core.behavior.channel.createMessage
 import dev.kord.core.entity.Member
 import dev.kord.core.entity.Message
-import dev.kord.core.entity.channel.GuildMessageChannel
-import dev.kord.core.entity.channel.TextChannel
 import dev.kord.x.emoji.Emojis
 import dev.kord.x.emoji.addReaction
-import dev.lysithea.franziska.command.CommandCategory
-import dev.lysithea.franziska.command.SyntaxContext
-import dev.lysithea.franziska.command.abstractions.AbstractSyntaxCommand
 import dev.lysithea.franziska.constants.Embeds
+import dev.lysithea.franziska.core.command.CommandCategory
+import dev.lysithea.franziska.core.command.SyntaxContext
+import dev.lysithea.franziska.core.command.abstractions.AbstractSyntaxCommand
 import dev.lysithea.franziska.core.permission.PermissionLevel
 import dev.lysithea.franziska.core.permission.PermissionState
 import dev.lysithea.franziska.core.permission.UsageArea
@@ -23,7 +20,6 @@ import dev.lysithea.franziska.utils.getAverageColour
 import dev.lysithea.franziska.utils.toInputStream
 import kotlinx.coroutines.launch
 import mu.KotlinLogging
-import org.slf4j.LoggerFactory
 import java.awt.BasicStroke
 import java.awt.Color
 import java.awt.Font
@@ -332,6 +328,7 @@ class ConnectFourSyntaxCommand : AbstractSyntaxCommand() {
         }
 
     }
+
 
     class GameBoard(
         val context: SyntaxContext,

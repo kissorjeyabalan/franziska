@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package dev.lysithea.franziska.utils
 
 import reactor.util.function.Tuple4
@@ -24,7 +26,7 @@ fun BufferedImage.getAverageColour(weight: String = "alpha"): Color = this.raste
     var green = 0.0
     var blue = 0.0
     var weights = 0.0
-    val getWeight: (Tuple4<Int, Int, Int, Double>) -> Double = when (weight.toLowerCase()) {
+    val getWeight: (Tuple4<Int, Int, Int, Double>) -> Double = when (weight.lowercase()) {
         "alpha" -> { i -> i.t4 }
         "saturation" -> { (r, g, b) -> Color.RGBtoHSB(r, g, b, null)[1].toDouble() }
         "brightness" -> { (r, g, b) -> Color.RGBtoHSB(r, g, b, null)[2].toDouble() }

@@ -8,14 +8,10 @@ import dev.kord.core.on
 import dev.kord.gateway.Intent
 import dev.kord.gateway.Intents
 import dev.kord.gateway.PrivilegedIntent
-import dev.lysithea.franziska.command.SyntaxCommandClientProvider
-import dev.lysithea.franziska.command.SyntaxContext
-import dev.lysithea.franziska.command.abstractions.AbstractSyntaxCommand
-import dev.lysithea.franziska.command.games.ConnectFourSyntaxCommand
-import dev.lysithea.franziska.command.general.EchoSyntaxCommand
-import dev.lysithea.franziska.command.interfaces.CommandClient
+import dev.lysithea.franziska.core.command.SyntaxCommandClientProvider
+import dev.lysithea.franziska.commands.games.ConnectFourSyntaxCommand
+import dev.lysithea.franziska.commands.general.EchoSyntaxCommand
 import dev.lysithea.franziska.core.config.Config
-import dev.lysithea.franziska.core.database.DataService
 import dev.lysithea.franziska.core.permission.PermissionHandlerProvider
 import io.ktor.client.*
 import io.ktor.client.engine.cio.*

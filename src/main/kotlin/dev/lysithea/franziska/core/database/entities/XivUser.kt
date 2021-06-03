@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package dev.lysithea.franziska.core.database.entities
 
 import dev.kord.common.entity.Snowflake
