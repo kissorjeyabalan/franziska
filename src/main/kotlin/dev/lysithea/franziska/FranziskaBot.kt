@@ -7,5 +7,4 @@ import kotlinx.coroutines.CoroutineScope
 interface FranziskaBot : CoroutineScope {
     val initialized: Boolean
     val database: DataService
-    suspend fun start(debug: Boolean = false)
 }

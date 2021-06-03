@@ -27,6 +27,7 @@ dependencies {
     implementation(platform("io.ktor:ktor-bom:1.5.3"))
 
     implementation("dev.kord.x:emoji:0.5.0-SNAPSHOT")
+    implementation("dev.kord.cache:cache-map:0.3.0")
 
     // Logging
     implementation("io.github.microutils", "kotlin-logging", "1.12.5")

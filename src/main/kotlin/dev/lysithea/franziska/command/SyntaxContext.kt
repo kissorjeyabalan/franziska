@@ -10,6 +10,7 @@ import dev.lysithea.franziska.command.interfaces.FranziskaContext
 import dev.lysithea.franziska.core.permission.PermissionHandler
 
 data class SyntaxContext(
+    override val franziska: FranziskaBot,
     val prefix: String,
     val permissionHandler: PermissionHandler,
     val command: AbstractCommand,
