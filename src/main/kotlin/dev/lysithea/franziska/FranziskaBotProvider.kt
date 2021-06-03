@@ -40,7 +40,7 @@ class FranziskaBotProvider : FranziskaBot, KoinComponent {
     override var initialized = false
         private set
 
-    suspend fun start(debug: Boolean = false) {
+    override suspend fun start(debug: Boolean) {
         kord = Kord(if (!debug) config.franziska.token else config.franziska.devToken) {
             httpClient = HttpClient(CIO)
             intents - Intents.nonPrivileged + Intent.GuildMembers

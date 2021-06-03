@@ -18,17 +18,19 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.asCoroutineDispatcher
 import kotlinx.coroutines.launch
 import mu.KotlinLogging
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 import java.util.concurrent.Executors
 import kotlin.coroutines.CoroutineContext
 
 class SyntaxCommandClientProvider(
-    private val franziska: FranziskaBot,
     override val permissionHandler: PermissionHandler,
     override val executor: CoroutineContext = Executors.newFixedThreadPool(
         5,
         DefaultThreadFactory("CommandClient")
     ).asCoroutineDispatcher()
-) : CommandClient<SyntaxContext, AbstractSyntaxCommand> {
+) : CommandClient<SyntaxContext, AbstractSyntaxCommand>, KoinComponent
+{   private val franziska by inject<FranziskaBot>()
     private val log = KotlinLogging.logger { }
     override val errorHandler = DebugErrorHandler<SyntaxContext>()
 
@@ -56,7 +58,7 @@ class SyntaxCommandClientProvider(
                 PermissionState.ACCEPTED -> {
                     if (!command.usageArea.matches(event)) return handleIncorrectUsageArea(event.message.channel)
                     val args = commandItems.drop(1)
-                    val context = SyntaxContext(franziska, guildSettings.prefix, permissionHandler, command, args, member, event)
+                    val context = SyntaxContext(guildSettings.prefix, permissionHandler, command, args, member, event)
                     processCommand(command, context)
                 }
                 PermissionState.DECLINED -> return handleInsufficientPermission(command.permission, event.message.channel.asChannel())
