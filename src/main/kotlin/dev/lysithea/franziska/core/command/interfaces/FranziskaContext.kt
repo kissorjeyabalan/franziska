@@ -23,4 +23,6 @@ interface FranziskaContext {
      */
     suspend fun respond(content: String): Message
     suspend fun respond(embedBuilder: EmbedBuilder): Message
+
+    fun isBotOwner(memberId: String): Boolean = franziska.config.franziska.owner == memberId
 }

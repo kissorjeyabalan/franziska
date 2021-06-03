@@ -4,6 +4,7 @@ import dev.kord.common.entity.Snowflake
 import dev.kord.core.entity.Member
 import dev.lysithea.franziska.core.config.Config
 import dev.lysithea.franziska.core.database.entities.FranziskaSetting
+import mu.KotlinLogging
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -21,7 +22,7 @@ class PermissionHandlerProvider : PermissionHandler, KoinComponent {
         ignoreBlacklist: Boolean
     ): PermissionState {
         executedBy ?: return PermissionState.DECLINED
-        if (executedBy.id == Snowflake(config.franziska.owner))
+        if (executedBy.id.asString == config.franziska.owner)
             return PermissionState.ACCEPTED
 
         return if (settings == null || !settings.permissions.containsKey(executedBy.id.asString)) {

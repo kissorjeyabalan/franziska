@@ -72,8 +72,10 @@ class SettingsSyntaxCommand : AbstractSyntaxCommand(), SubCommandRegistry<Abstra
             }
 
             if (member == context.member) {
-                context.respond(Embeds.error("Illegal action", "You can not set your own role."))
-                return
+                if (!context.isBotOwner(context.member.id.asString)) {
+                    context.respond(Embeds.error("Illegal action", "You can not set your own role."))
+                    return
+                }
             }
 
             val role = PermissionLevel.values().firstOrNull { it.name.lowercase() == context.args[0].lowercase() }
@@ -89,7 +91,7 @@ class SettingsSyntaxCommand : AbstractSyntaxCommand(), SubCommandRegistry<Abstra
                 return
             }
 
-            when (context.permissionHandler.hasAccess(role, member, context.guildSettings)) {
+            when (context.permissionHandler.hasAccess(role, context.member, context.guildSettings)) {
                 PermissionState.DECLINED -> {
                     context.respond(
                         Embeds.error(

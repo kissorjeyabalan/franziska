@@ -38,7 +38,6 @@ data class SyntaxContext(
     override suspend fun respond(embedBuilder: EmbedBuilder): Message {
         return event.message.channel.createMessage(embedBuilder)
     }
-
     /**
      * The [MessageChannelBehavior] for this [event].
      */

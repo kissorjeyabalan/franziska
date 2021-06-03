@@ -28,7 +28,7 @@ class FranziskaBotProvider : FranziskaBot, KoinComponent {
     override val coroutineContext = Dispatchers.IO + SupervisorJob()
 
     private lateinit var kord: Kord
-    private val config by inject<Config>()
+    override val config by inject<Config>()
 
     private val syntaxClient =
         SyntaxCommandClientProvider(this, PermissionHandlerProvider())
