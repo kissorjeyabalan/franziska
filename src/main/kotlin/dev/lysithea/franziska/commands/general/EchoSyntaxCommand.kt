@@ -18,9 +18,7 @@ class EchoSyntaxCommand : AbstractSyntaxCommand() {
         context.franziska.launch {
             context.event.message.channel.createMessage(
                 context.event.message
-                    .content.removePrefix(
-                        "${context.guildSettings.prefix}$name"
-                    )
+                    .content.removePrefix(context.commandWithPrefix)
             )
         }
     }

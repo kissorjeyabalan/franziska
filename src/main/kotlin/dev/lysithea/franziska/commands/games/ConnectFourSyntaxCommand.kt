@@ -75,7 +75,7 @@ class ConnectFourSyntaxCommand : AbstractSyntaxCommand() {
                 context.channel.createMessage(
                     Embeds.error(
                         "Invalid syntax",
-                        "Example: ${context.commandWithPrefix} play A"
+                        "Example: `${context.commandWithPrefix} play A`."
                     )
                 )
                 return@launch
@@ -99,7 +99,7 @@ class ConnectFourSyntaxCommand : AbstractSyntaxCommand() {
                 context.channel.createMessage(
                     Embeds.error(
                         "Invalid column",
-                        "Must be a letter Must be a letter between A and ${('A' + WIDTH - 1)}"
+                        "Must be a letter Must be a letter between A and ${('A' + WIDTH - 1)}."
                     )
                 )
                 return@launch
@@ -197,7 +197,7 @@ class ConnectFourSyntaxCommand : AbstractSyntaxCommand() {
                 return@launch
             }
             if (board.player1 != context.member) {
-                when (context.permissionHandler.hasAccess(PermissionLevel.MOD, context.member)) {
+                when (context.permissionHandler.hasAccess(PermissionLevel.MOD, context.member, context.guildSettings)) {
                     PermissionState.ACCEPTED -> {
                     }
                     else -> return@launch

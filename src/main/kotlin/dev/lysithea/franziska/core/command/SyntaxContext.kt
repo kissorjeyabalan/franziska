@@ -1,6 +1,7 @@
 package dev.lysithea.franziska.core.command
 
 import dev.kord.core.behavior.channel.MessageChannelBehavior
+import dev.kord.core.entity.Guild
 import dev.kord.core.entity.Member
 import dev.kord.core.entity.Message
 import dev.kord.core.event.message.MessageCreateEvent

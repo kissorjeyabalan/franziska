@@ -1,6 +1,7 @@
 package dev.lysithea.franziska.core.permission
 
 import dev.kord.core.entity.Member
+import dev.lysithea.franziska.core.database.entities.FranziskaSetting
 
 /**
  * Interface defining a handler for permissions.
@@ -19,6 +20,7 @@ interface PermissionHandler {
     suspend fun hasAccess(
         permission: PermissionLevel,
         executedBy: Member?,
+        settings: FranziskaSetting? = null,
         ignoreBlacklist: Boolean = false
     ): PermissionState
 }

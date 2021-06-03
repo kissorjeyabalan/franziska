@@ -69,18 +69,22 @@ class SyntaxCommandClientProvider(
         val guildSettings = database.settings.getOrDefault(guild.id)
         if (!guildSettings.enabled) return
 
-        val commandItems = event.message.content.split("\\s+".toRegex())
+        val commandItems = event.message.content.removePrefix(guildSettings.prefix).trim().split("\\s+".toRegex())
 
         if (event.message.content.startsWith(guildSettings.prefix)) {
-            val command = resolveCommand(commandItems[0].removePrefix(guildSettings.prefix)) ?: return
-            when (permissionHandler.hasAccess(command.permission, member)) {
+            val command = resolveCommand(commandItems[0].trim()) ?: return
+            when (permissionHandler.hasAccess(command.permission, member, guildSettings)) {
                 PermissionState.ACCEPTED -> {
                     if (!command.usageArea.matches(event)) return handleIncorrectUsageArea(event.message.channel)
                     val args = commandItems.drop(1)
-                    val context = SyntaxContext(franziska, guildSettings, permissionHandler, command, args, member, event)
+                    val context =
+                        SyntaxContext(franziska, guildSettings, permissionHandler, command, args, member, event)
                     processCommand(command, context)
                 }
-                PermissionState.DECLINED -> return handleInsufficientPermission(command.permission, event.message.channel.asChannel())
+                PermissionState.DECLINED -> return handleInsufficientPermission(
+                    command.permission,
+                    event.message.channel.asChannel()
+                )
                 PermissionState.IGNORE -> return
             }
         }
@@ -121,7 +125,7 @@ class SyntaxCommandClientProvider(
     private suspend fun handleIncorrectUsageArea(channel: MessageChannelBehavior) {
         channel.createMessage(
             Embeds.error(
-                "Invalid context.",
+                "Invalid context",
                 "This command can not be used in this context."
             )
         )

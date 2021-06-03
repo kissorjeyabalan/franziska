@@ -3,6 +3,7 @@ package dev.lysithea.franziska.core.permission
 import dev.kord.common.entity.Snowflake
 import dev.kord.core.entity.Member
 import dev.lysithea.franziska.core.config.Config
+import dev.lysithea.franziska.core.database.entities.FranziskaSetting
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -16,16 +17,26 @@ class PermissionHandlerProvider : PermissionHandler, KoinComponent {
     override suspend fun hasAccess(
         permission: PermissionLevel,
         executedBy: Member?,
+        settings: FranziskaSetting?,
         ignoreBlacklist: Boolean
     ): PermissionState {
         executedBy ?: return PermissionState.DECLINED
         if (executedBy.id == Snowflake(config.franziska.owner))
             return PermissionState.ACCEPTED
 
-        return if (permission > PermissionLevel.ANY) {
-            PermissionState.DECLINED
+        return if (settings == null || !settings.permissions.containsKey(executedBy.id.asString)) {
+            if (permission > PermissionLevel.ANY) {
+                PermissionState.DECLINED
+            } else {
+                PermissionState.ACCEPTED
+            }
         } else {
-            PermissionState.ACCEPTED
+            val userPermission = settings.permissions[executedBy.id.asString]!!
+            if (userPermission >= permission) {
+                PermissionState.ACCEPTED
+            } else {
+                PermissionState.DECLINED
+            }
         }
     }
 }
