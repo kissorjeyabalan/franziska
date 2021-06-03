@@ -23,5 +23,5 @@ enum class CommandCategory(val displayName: String) {
     /**
      * Dangerous commands.
      */
-    DANGER("Danger")
+    ADMINISTRATION("Administration")
 }

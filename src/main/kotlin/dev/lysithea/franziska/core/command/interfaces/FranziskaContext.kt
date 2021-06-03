@@ -2,6 +2,7 @@ package dev.lysithea.franziska.core.command.interfaces
 
 import dev.kord.core.behavior.channel.ChannelBehavior
 import dev.kord.core.entity.Message
+import dev.kord.rest.builder.message.EmbedBuilder
 import dev.lysithea.franziska.FranziskaBot
 import dev.lysithea.franziska.core.database.entities.FranziskaSetting
 
@@ -21,4 +22,5 @@ interface FranziskaContext {
      * @return the [Message] that was created.
      */
     suspend fun respond(content: String): Message
+    suspend fun respond(embedBuilder: EmbedBuilder): Message
 }

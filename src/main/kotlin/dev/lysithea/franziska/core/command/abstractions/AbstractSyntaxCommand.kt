@@ -1,6 +1,6 @@
 package dev.lysithea.franziska.core.command.abstractions
 
-import dev.lysithea.franziska.commands.SyntaxContext
+import dev.lysithea.franziska.core.command.SyntaxContext
 import dev.lysithea.franziska.core.command.interfaces.CommandRegistry
 
 /**
