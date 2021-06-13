@@ -19,7 +19,7 @@ class DebugErrorHandler<T : FranziskaContext> : ErrorHandler<T> {
     ) {
         log.error { "An error occurred while executing command in $context" }
         context.franziska.launch {
-            context.respond("An error has occurred while executing command. This error has not been handled since Franziska is in development mode.")
+            context.respond("An error has occurred while executing command. This error has not been handled since Franziska is in development mode.\nErr: ```${exception.message}```")
         }
     }
 }

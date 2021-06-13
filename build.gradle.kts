@@ -49,6 +49,7 @@ dependencies {
     implementation("io.insert-koin", "koin-core", "3.0.2")
     implementation("io.projectreactor", "reactor-core", "3.4.4")
     implementation("io.projectreactor.kotlin", "reactor-kotlin-extensions", "1.1.3")
+    implementation("com.google.guava", "guava", "30.1.1-jre")
 
     // Configuration
     implementation("com.fasterxml.jackson.module", "jackson-module-kotlin", "2.12.+")

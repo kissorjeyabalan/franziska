@@ -23,5 +23,6 @@ enum class CommandCategory(val displayName: String) {
     /**
      * Dangerous commands.
      */
-    ADMINISTRATION("Administration")
+    ADMINISTRATION("Administration"),
+    FFXIV("Final Fantasy XIV")
 }

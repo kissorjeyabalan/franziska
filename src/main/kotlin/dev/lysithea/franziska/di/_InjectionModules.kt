@@ -5,6 +5,13 @@ import com.sksamuel.hoplite.PropertySource
 import dev.lysithea.franziska.core.config.Config
 import dev.lysithea.franziska.core.database.DataService
 import dev.lysithea.franziska.core.database.MongoService
+import dev.lysithea.franziska.external.xivapi.XivApi
+import io.ktor.client.*
+import io.ktor.client.engine.okhttp.*
+import io.ktor.client.features.*
+import io.ktor.client.features.json.*
+import io.ktor.client.features.json.serializer.*
+import io.ktor.http.*
 import org.koin.core.Koin
 import org.koin.dsl.module
 import java.io.File
@@ -21,4 +28,17 @@ val franziskaModules = module {
             .loadConfigOrThrow<Config>()
     }
     single<DataService> { MongoService() }
+
+    single {
+        HttpClient(OkHttp) {
+            install(JsonFeature) {
+                serializer = KotlinxSerializer(kotlinx.serialization.json.Json {
+                    ignoreUnknownKeys = true
+                })
+            }
+            install(HttpTimeout)
+        }
+    }
+
+    single { XivApi(get()) }
 }

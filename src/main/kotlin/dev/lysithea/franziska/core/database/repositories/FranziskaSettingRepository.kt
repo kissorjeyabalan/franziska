@@ -18,7 +18,7 @@ interface FranziskaSettingRepository {
     suspend fun getOrDefault(guildId: Snowflake?): FranziskaSetting
 
     /**
-     * Updated or creates a [FranziskaSetting].
+     * Updates or creates a [FranziskaSetting].
      *
      * @param setting to create or update
      * @return true if persisted to data service

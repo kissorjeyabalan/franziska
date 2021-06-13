@@ -19,7 +19,7 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class XivUser(
-    @SerialName("discord_id") val discordId: Snowflake,
+    @SerialName("discord_id") val discordId: String,
     @SerialName("character_name") val characterName: String,
     @SerialName("server_name") val serverName: String,
     @SerialName("xiv_id") val xivId: String?,

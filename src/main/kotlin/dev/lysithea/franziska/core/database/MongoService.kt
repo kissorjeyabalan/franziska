@@ -3,6 +3,8 @@ package dev.lysithea.franziska.core.database
 import dev.lysithea.franziska.core.config.Config
 import dev.lysithea.franziska.core.database.repositories.FranziskaSettingRepository
 import dev.lysithea.franziska.core.database.repositories.FranziskaSettingRepositoryProvider
+import dev.lysithea.franziska.core.database.repositories.XivRepository
+import dev.lysithea.franziska.core.database.repositories.XivRepositoryProvider
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.litote.kmongo.coroutine.CoroutineDatabase
@@ -18,4 +20,5 @@ class MongoService : DataService, KoinComponent {
         KMongo.createClient(config.mongo.connectionString).coroutine.getDatabase(config.mongo.database)
 
     override val settings: FranziskaSettingRepository = FranziskaSettingRepositoryProvider(database)
+    override val xiv: XivRepository = XivRepositoryProvider(database)
 }

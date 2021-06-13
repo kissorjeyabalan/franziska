@@ -38,8 +38,18 @@ object Embeds {
             color = Colors.BLUE
         }.apply(builder)
 
+    inline fun thumbnail(imgUrl: String, title: String, description: String?, builder: EmbedCreator = {}): EmbedBuilder =
+        EmbedBuilder().apply {
+            this.title = title
+            this.description = description
+            this.thumbnail {
+                url = imgUrl
+            }
+        }.apply(builder)
+
     @PublishedApi
     internal fun EmbedBuilder.title(emoji: String, title: String) {
         this.title = "$emoji $title"
     }
+
 }
