@@ -41,12 +41,7 @@ class SettingsSyntaxCommand : AbstractSyntaxCommand(), SubCommandRegistry<Abstra
             return
         }
 
-        val subCommand = subCommands[context.args[0].lowercase()]
-        if (subCommand != null) {
-            subCommand.execute(context.copy(args = context.args.drop(1), command = subCommand))
-        } else {
-            context.respond(Embeds.error("Command not found", "${context.args[0]} is not a valid subcommand."))
-        }
+        executeSubCommand(context)
     }
 
     private inner class SetUserRoleCommand : AbstractSyntaxSubCommand(this), KoinComponent {

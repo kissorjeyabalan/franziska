@@ -4,6 +4,7 @@ import dev.kord.core.behavior.channel.ChannelBehavior
 import dev.kord.core.entity.Message
 import dev.kord.rest.builder.message.EmbedBuilder
 import dev.lysithea.franziska.FranziskaBot
+import dev.lysithea.franziska.core.FranziskaFeature
 import dev.lysithea.franziska.core.database.entities.FranziskaSetting
 
 /**
@@ -25,4 +26,5 @@ interface FranziskaContext {
     suspend fun respond(embedBuilder: EmbedBuilder): Message
 
     fun isBotOwner(memberId: String): Boolean = franziska.config.franziska.owner == memberId
+    fun hasFeature(feature: FranziskaFeature) = guildSettings.enabledFeatures.contains(feature)
 }

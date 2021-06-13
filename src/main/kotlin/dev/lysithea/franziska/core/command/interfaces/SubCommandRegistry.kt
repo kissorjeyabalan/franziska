@@ -1,6 +1,9 @@
 package dev.lysithea.franziska.core.command.interfaces
 
+import dev.lysithea.franziska.constants.Embeds
+import dev.lysithea.franziska.core.command.SyntaxContext
 import dev.lysithea.franziska.core.command.abstractions.AbstractCommand
+import dev.lysithea.franziska.core.command.abstractions.AbstractSyntaxCommand
 
 /**
  * Registry of [AbstractCommand]s as subcommands.
@@ -16,5 +19,14 @@ interface SubCommandRegistry<T: AbstractCommand> {
 
     private fun registerSubCommand(command: T) {
         subCommands[command.name] = command
+    }
+
+    suspend fun executeSubCommand(context: SyntaxContext) {
+        val subCommand = subCommands[context.args[0].lowercase()] as? AbstractSyntaxCommand
+        if (subCommand != null) {
+            subCommand.execute(context.copy(args = context.args.drop(1), command = subCommand))
+        } else {
+            context.respond(Embeds.error("Command not found", "${context.args[0]} is not a valid subcommand."))
+        }
     }
 }

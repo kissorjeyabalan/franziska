@@ -10,4 +10,5 @@ import dev.kord.common.Color
 object Colors {
     val LIGHT_GREEN: Color = Color(46, 204, 113)
     val LIGHT_RED: Color = Color(231, 76, 60)
+    val BLUE: Color = Color(52, 152, 219)
 }

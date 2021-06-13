@@ -23,6 +23,5 @@ data class XivUser(
     @SerialName("character_name") val characterName: String,
     @SerialName("server_name") val serverName: String,
     @SerialName("xiv_id") val xivId: String?,
-    @SerialName("verified") val verified: Boolean = false,
     @SerialName("created_at") val createdAt: Long = System.currentTimeMillis()
 )

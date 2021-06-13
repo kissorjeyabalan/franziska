@@ -1,6 +1,7 @@
 package dev.lysithea.franziska.core.database.entities
 
 import dev.kord.common.entity.Snowflake
+import dev.lysithea.franziska.core.FranziskaFeature
 import dev.lysithea.franziska.core.command.abstractions.AbstractSyntaxCommand
 import dev.lysithea.franziska.core.permission.PermissionLevel
 import kotlinx.serialization.SerialName
@@ -20,5 +21,6 @@ data class FranziskaSetting(
     @SerialName("guild_id") val guildId: String,
     @SerialName("enabled") val enabled: Boolean = true,
     @SerialName("prefix") val prefix: String = "%",
-    @SerialName("permissions") val permissions: Map<String, PermissionLevel> = mapOf()
+    @SerialName("permissions") val permissions: Map<String, PermissionLevel> = mapOf(),
+    @SerialName("enabledFeatures") val enabledFeatures: Set<FranziskaFeature> = setOf()
 )
