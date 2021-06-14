@@ -8,3 +8,6 @@ mongo:
   database: <mongo-database>
   username: <mongo-username>
   password: <mongo-password>
+xiv:
+  xivApiToken: <xiv-api-token>
+  cardServiceUri: <base-url for https://github.com/kissorjeyabalan/XIV-Character-Cards>
