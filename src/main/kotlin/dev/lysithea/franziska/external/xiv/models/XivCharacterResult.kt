@@ -1,4 +1,4 @@
-package dev.lysithea.franziska.external.xivapi.models
+package dev.lysithea.franziska.external.xiv.models
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

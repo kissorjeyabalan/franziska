@@ -1,8 +1,8 @@
-package dev.lysithea.franziska.external.xivapi
+package dev.lysithea.franziska.external.xiv
 
 import dev.lysithea.franziska.core.config.Config
-import dev.lysithea.franziska.external.xivapi.models.XivApiResponse
-import dev.lysithea.franziska.external.xivapi.models.XivCharacterResult
+import dev.lysithea.franziska.external.xiv.models.XivApiResponse
+import dev.lysithea.franziska.external.xiv.models.XivCharacterResult
 import io.ktor.client.*
 import io.ktor.client.request.*
 import io.ktor.http.*

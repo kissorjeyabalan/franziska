@@ -11,7 +11,7 @@ interface XivRepository {
      * @param userId Discord snowflake to retrieve user for.
      * @return [XivUser] or null if no xiv user exists.
      */
-    suspend fun getOrNull(userId: Snowflake?): XivUser?
+    suspend fun getOrNull(userId: String): XivUser?
 
     /***
      * Updates or creates a [XivUser].
@@ -20,4 +20,5 @@ interface XivRepository {
      * @return If data was persisted
      */
     suspend fun upsert(xivUser: XivUser): Boolean
+    suspend fun delete(id: String): Boolean
 }

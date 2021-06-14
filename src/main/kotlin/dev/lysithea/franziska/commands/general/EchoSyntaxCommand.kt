@@ -6,8 +6,9 @@ import dev.lysithea.franziska.core.command.abstractions.AbstractSyntaxCommand
 import dev.lysithea.franziska.core.permission.PermissionLevel
 import dev.lysithea.franziska.core.permission.UsageArea
 import kotlinx.coroutines.launch
+import org.koin.core.component.KoinComponent
 
-class EchoSyntaxCommand : AbstractSyntaxCommand() {
+class EchoSyntaxCommand : AbstractSyntaxCommand(), KoinComponent {
     override val name = "echo"
     override val description: String = "echoes back whatever"
     override val permission: PermissionLevel = PermissionLevel.OWNER

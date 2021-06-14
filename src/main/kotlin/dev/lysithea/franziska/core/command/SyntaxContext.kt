@@ -49,4 +49,16 @@ data class SyntaxContext(
      */
     val commandWithPrefix: String
         get() = "${guildSettings.prefix}${command.name}"
+
+    /**
+     * Get the prefix for the guild this context was created for.
+     */
+    val prefix: String
+        get() = guildSettings.prefix
+
+    /**
+     * Get executing members snowflake as string.
+     */
+    val memberId: String
+        get() = member.id.asString
 }

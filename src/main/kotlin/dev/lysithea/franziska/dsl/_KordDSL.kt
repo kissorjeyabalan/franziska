@@ -3,6 +3,7 @@ package dev.lysithea.franziska.dsl
 import dev.kord.common.entity.Snowflake
 import dev.kord.core.behavior.channel.MessageChannelBehavior
 import dev.kord.core.behavior.channel.createMessage
+import dev.kord.core.behavior.reply
 import dev.kord.core.entity.Guild
 import dev.kord.core.entity.Member
 import dev.kord.core.entity.Message
@@ -21,6 +22,13 @@ typealias EmbedCreator = EmbedBuilder.() -> Unit
  */
 suspend fun MessageChannelBehavior.createMessage(embedBuilder: EmbedBuilder): Message =
     createMessage { embed = embedBuilder }
+
+/**
+ * Replies to a [Message] with [EmbedBuilder].
+ */
+suspend fun Message.reply(embedBuilder: EmbedBuilder): Message =
+    reply { embed = embedBuilder }
+
 
 
 internal val mentionRegex = Regex("(?:<@!?)?([0-9]+)>?")

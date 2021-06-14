@@ -20,17 +20,17 @@ class XivRepositoryProvider(private val database: CoroutineDatabase) : XivReposi
         .expireAfterWrite(15, TimeUnit.MINUTES)
         .build()
 
-    override suspend fun getOrNull(userId: Snowflake?): XivUser? {
-        if (userId == null) return null
-        val cached = userCache.getIfPresent(userId.asString)
+    override suspend fun getOrNull(userId: String): XivUser? {
+        if (userId.isBlank()) return null
+        val cached = userCache.getIfPresent(userId)
         if (cached != null) return cached
 
         val user = database
             .getCollection<XivUser>("users")
-            .findOne(XivUser::discordId eq userId.asString)
+            .findOne(XivUser::discordId eq userId)
 
         if (user != null)
-            userCache.put(userId.asString, user)
+            userCache.put(userId, user)
         return user
     }
 
@@ -38,7 +38,15 @@ class XivRepositoryProvider(private val database: CoroutineDatabase) : XivReposi
         val upserted = database
             .getCollection<XivUser>("users")
             .updateOne(XivUser::discordId eq xivUser.discordId, xivUser, UpdateOptions().upsert(true))
+            .wasAcknowledged()
         userCache.put(xivUser.discordId, xivUser)
-        return upserted.modifiedCount == 1L || upserted.upsertedId != null
+        return upserted
+    }
+
+    override suspend fun delete(userId: String): Boolean {
+        userCache.invalidate(userId)
+        return database.getCollection<XivUser>("users")
+            .deleteOne(XivUser::discordId eq userId)
+            .wasAcknowledged()
     }
 }

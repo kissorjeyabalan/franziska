@@ -12,11 +12,11 @@ import dev.lysithea.franziska.core.command.abstractions.AbstractSyntaxCommand
 import dev.lysithea.franziska.core.database.DataService
 import dev.lysithea.franziska.core.database.entities.XivUser
 import dev.lysithea.franziska.core.permission.PermissionLevel
-import dev.lysithea.franziska.external.xivapi.XivApi
+import dev.lysithea.franziska.external.xiv.XivApi
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-class IAmXivUserCommand : AbstractSyntaxCommand(), KoinComponent {
+class XivIamUserCommand : AbstractSyntaxCommand(), KoinComponent {
     private val xivApi by inject<XivApi>()
     private val dataService by inject<DataService>()
 
@@ -27,7 +27,8 @@ class IAmXivUserCommand : AbstractSyntaxCommand(), KoinComponent {
 
     override suspend fun execute(context: SyntaxContext) {
         if (!context.hasFeature(FranziskaFeature.FFXIV)) return
-        if (context.args.size != 3) {
+        val args = Arguments(context.args)
+        if (!args.valid) {
             context.respond(
                 Embeds.error(
                     "Invalid syntax",
@@ -37,18 +38,23 @@ class IAmXivUserCommand : AbstractSyntaxCommand(), KoinComponent {
             return
         }
 
-        val server = context.args[0]
-        val name = "${context.args[1]} ${context.args[2]}"
+        if (args.delete) {
+            context.channel.withTyping {
+                dataService.xiv.delete(context.memberId)
+                context.event.message.addReaction(ReactionEmoji.from(Emojis.whiteCheckMark))
+            }
+            return
+        }
 
         context.channel.withTyping {
-            val res = xivApi.findCharacter(name, server)
+            val res = xivApi.findCharacter(args.fullName, args.server)
             if (res.pagination.results == 1L) {
                 val foundCharacter = res.results.first()
                 dataService.xiv.upsert(
                     XivUser(
                         discordId = context.member.id.asString,
-                        characterName = name,
-                        serverName = server,
+                        characterName = args.fullName,
+                        serverName = args.server,
                         xivId = foundCharacter.id.toString()
                     )
                 )
@@ -56,11 +62,30 @@ class IAmXivUserCommand : AbstractSyntaxCommand(), KoinComponent {
                     Embeds.thumbnail(
                         foundCharacter.avatar,
                         "Character connected!",
-                        "Character $name (${foundCharacter.server}) has been successfully linked to ${context.member.displayName}."
+                        "Character ${args.fullName} on ${foundCharacter.server} has been successfully linked to ${context.member.displayName}."
                     )
                 )
             } else {
-                context.respond(Embeds.error("No characters found!", "No character named $name found on $server."))
+                context.respond(Embeds.error("No characters found!", "No character named ${args.fullName} found on ${args.server}."))
+            }
+        }
+    }
+
+    private data class Arguments(private val input: List<String>) {
+        var valid: Boolean = false
+        var delete: Boolean = false
+        var server: String = ""
+        var fullName: String = ""
+
+        init {
+            if (input.size == 1 && input.first().lowercase() == "dead") {
+                valid = true
+                delete = true
+            }
+            if (input.size == 3) {
+                server = input[0]
+                "${input[1]} ${input[2]}".also { fullName = it }
+                valid = true
             }
         }
     }
