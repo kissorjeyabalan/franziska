@@ -10,9 +10,7 @@ import dev.kord.gateway.Intents
 import dev.kord.gateway.PrivilegedIntent
 import dev.lysithea.franziska.commands.administration.FeatureSettingsSyntaxCommand
 import dev.lysithea.franziska.commands.administration.settings.SettingsSyntaxCommand
-import dev.lysithea.franziska.commands.ffxiv.XivEqUserCommand
-import dev.lysithea.franziska.commands.ffxiv.XivIamUserCommand
-import dev.lysithea.franziska.commands.ffxiv.XivWhoIsUserCommand
+import dev.lysithea.franziska.commands.ffxiv.*
 import dev.lysithea.franziska.core.command.SyntaxCommandClientProvider
 import dev.lysithea.franziska.commands.games.ConnectFourSyntaxCommand
 import dev.lysithea.franziska.commands.general.EchoSyntaxCommand
@@ -92,9 +90,11 @@ class FranziskaBotProvider : FranziskaBot, KoinComponent {
             FeatureSettingsSyntaxCommand(),
 
             // FFXIV
+            XivEqUserCommand(),
             XivIamUserCommand(),
-            XivWhoIsUserCommand(),
-            XivEqUserCommand()
+            XivTheyAreUserCommand(),
+            XivWhoAmICommand(),
+            XivWhoIsUserCommand()
         )
     }
 }
