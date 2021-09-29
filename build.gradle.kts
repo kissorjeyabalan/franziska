@@ -4,6 +4,7 @@ plugins {
     application
 
     kotlin("jvm")
+    kotlin("plugin.serialization")
 
     id("com.github.jakemarsden.git-hooks")
     id("com.github.johnrengelman.shadow")
@@ -22,14 +23,19 @@ repositories {
 
 dependencies {
     detektPlugins(libs.detekt)
+    implementation(libs.kotlin.stdlib)
 
     implementation(libs.kord.extensions)
-    implementation(libs.kotlin.stdlib)
+
+    // Konf
+    implementation(libs.konf.core)
+    implementation(libs.konf.yaml)
 
     // Logging dependencies
     implementation(libs.groovy)
     implementation(libs.logback)
     implementation(libs.logging)
+    implementation(libs.sentry)
 }
 
 application {
@@ -67,4 +73,19 @@ java {
 detekt {
     buildUponDefaultConfig = true
     config = rootProject.files("detekt.yml")
+}
+
+val generateBuildInfo = task("generateBuildInfo") {
+    outputs.file("src/main/resources/build.properties")
+    doLast {
+        File("src/main/resources/build.properties").writeText(
+            "version=${project.version}"
+        )
+    }
+}
+
+tasks.processResources {
+    dependsOn("generateBuildInfo")
+    from("src/main/resources/build.properties")
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }

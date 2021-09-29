@@ -1,21 +1,42 @@
+import ch.qos.logback.classic.filter.ThresholdFilter
 import ch.qos.logback.core.joran.spi.ConsoleTarget
+import io.sentry.logback.SentryAppender
 
-def environment = System.getenv().getOrDefault("ENVIRONMENT", "production")
-def defaultLevel = INFO
+def environment = System.getenv().getOrDefault("SENTRY_ENVIRONMENT", "dev")
+def sentry_dsn = System.getenv().getOrDefault("SENTRY_DSN", null)
 
-if (environment == "debug") {
-    defaultLevel = DEBUG
+def defaultLevel = DEBUG
 
-    // Silence warning about missing native PRNG on Windows
+if (environment == "production") {
+    defaultLevel = INFO
+} else {
+    // silence missing native prng warning
     logger("io.ktor.util.random", ERROR)
+
+    // sentry entries we don't care about
+    logger("io.sentry.DefaultSentryClientFactory", INFO)
+    logger("io.sentry.DefaultSentryClientFactory", INFO)
+    logger("io.sentry.SentryClient", INFO)
+    logger("io.sentry.SentryClientFactory", INFO)
+    logger("io.sentry.config.FileResourceLoader", INFO)
+    logger("io.sentry.config.provider.EnvironmentConfigurationProvider", INFO)
+    logger("io.sentry.config.provider.ResourceLoaderConfigurationProvider", INFO)
 }
 
 appender("CONSOLE", ConsoleAppender) {
     encoder(PatternLayoutEncoder) {
         pattern = "%d{yyyy-MM-dd HH:mm:ss:SSS Z} | %5level | %40.40logger{40} | %msg%n"
     }
-
     target = ConsoleTarget.SystemErr
 }
 
-root(defaultLevel, ["CONSOLE"])
+if (sentry_dsn != null) {
+    appender("SENTRY", SentryAppender) {
+        filter(ThresholdFilter) {
+            level = WARN
+        }
+    }
+    root(defaultLevel, ["CONSOLE", "SENTRY"])
+} else {
+    root(defaultLevel, ["CONSOLE"])
+}

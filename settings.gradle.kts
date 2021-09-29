@@ -1,6 +1,7 @@
 pluginManagement {
     plugins {
         kotlin("jvm") version "1.5.30"
+        kotlin("plugin.serialization") version "1.5.30"
 
         // Update this in libs.version.toml when you change it here
         id("io.gitlab.arturbosch.detekt") version "1.18.0"
