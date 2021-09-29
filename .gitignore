@@ -109,3 +109,6 @@ build/
 
 # Env vars - don't commit this!
 .env
+
+config.yaml
+config.dev.yaml
