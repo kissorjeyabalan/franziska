@@ -390,11 +390,6 @@ naming:
     excludeClassPattern: '$^'
     ignoreOverridden: true
 
-  InvalidPackageDeclaration:
-    active: true
-    # TODO: Update this with your project's base package
-    rootPackage: 'template'
-
   MatchingDeclarationName:
     active: true
     mustBeFirst: true
@@ -558,7 +553,7 @@ style:
     active: true
     maxJumpCount: 3
   MagicNumber:
-    active: true
+    active: false
     excludes: ['**/test/**', '**/androidTest/**', '**/*.Test.kt', '**/*.Spec.kt', '**/*.Spek.kt']
     ignoreNumbers: ['-1', '0', '1', '2']
     ignoreHashCodeFunction: true
