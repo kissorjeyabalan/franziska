@@ -24,7 +24,7 @@ data class RedditFeed(
                 val title: String,
                 val url: String,
                 val permalink: String,
-                @SerialName("author_flair_text") val authorFlairText: String,
+                @SerialName("created_utc") val createdAtUtc: Double
             )
         }
     }
