@@ -5,7 +5,8 @@ import dev.lysithea.franziska.config.buildInfo
 import dev.lysithea.franziska.config.config
 import dev.lysithea.franziska.di._httpModules
 import dev.lysithea.franziska.di._xivModules
-import dev.lysithea.franziska.extensions.ffxiv.FashionReportExtension
+import dev.lysithea.franziska.extensions.ffxiv.XivFashionReportExtension
+import dev.lysithea.franziska.extensions.ffxiv.XivServerTimeExtensions
 import mu.KotlinLogging
 
 lateinit var bot: ExtensibleBot
@@ -23,7 +24,8 @@ suspend fun main() {
                 }
             }
 
-            add(::FashionReportExtension)
+            add(::XivFashionReportExtension)
+            add(::XivServerTimeExtensions)
         }
     }
 

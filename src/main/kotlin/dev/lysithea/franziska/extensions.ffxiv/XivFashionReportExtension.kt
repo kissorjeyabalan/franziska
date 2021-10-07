@@ -5,8 +5,8 @@ import dev.kord.core.behavior.channel.createEmbed
 import dev.lysithea.franziska.services.XivFashionReportService
 import org.koin.core.component.inject
 
-class FashionReportExtension : Extension() {
-    override val name = "fashion-report"
+class XivFashionReportExtension : Extension() {
+    override val name = "xiv-fashion-report"
     private val frService: XivFashionReportService by inject()
 
     override suspend fun setup() {

@@ -2,13 +2,13 @@ package dev.lysithea.franziska.models
 
 import dev.kord.common.Color
 import dev.kord.rest.builder.message.EmbedBuilder
+import dev.lysithea.franziska.ext.BLUE
+import dev.lysithea.franziska.ext.format
 import java.time.DayOfWeek
 import java.time.LocalDateTime
 import java.time.ZoneOffset
-import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
 import java.time.temporal.TemporalAdjusters
-import java.util.*
 import kotlin.time.Duration
 import kotlin.time.ExperimentalTime
 
@@ -40,7 +40,7 @@ data class FashionReport(
 
     fun toEmbed(): EmbedBuilder.() -> Unit = {
         val (expired, desc) = this@FashionReport.expiryDetail
-        color = Color(52, 152, 219)
+        color = Color.BLUE
         author {
             name = "Fashion report by kaiyoko"
             url = "https://pbs.twimg.com/profile_images/1408609852805373952/wXEVfyY4_400x400.jpg"
@@ -51,9 +51,9 @@ data class FashionReport(
         description = desc
         footer {
             text = "Posted on ${
-                LocalDateTime.ofEpochSecond(createdAtSeconds, 0, ZoneOffset.UTC).format(
-                    DateTimeFormatter.ofPattern("dd MM yyyy HH:mm", Locale.ENGLISH)
-                )
+                LocalDateTime
+                    .ofEpochSecond(createdAtSeconds, 0, ZoneOffset.UTC)
+                    .format("dd MM yyyy HH:mm")
             }"
         }
     }
