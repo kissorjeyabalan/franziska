@@ -1,6 +1,7 @@
 package dev.lysithea.franziska.extensions.ffxiv
 
 import com.kotlindiscord.kord.extensions.extensions.Extension
+import com.kotlindiscord.kord.extensions.extensions.chatCommand
 import dev.kord.core.behavior.channel.createEmbed
 import dev.lysithea.franziska.services.XivFashionReportService
 import org.koin.core.component.inject
@@ -10,7 +11,7 @@ class XivFashionReportExtension : Extension() {
     private val frService: XivFashionReportService by inject()
 
     override suspend fun setup() {
-        command {
+        chatCommand {
             name = "fr"
             description = "Fetch latest fashion report"
 
@@ -19,7 +20,7 @@ class XivFashionReportExtension : Extension() {
 
             action {
                 val latestReport = frService.getFashionReport()
-                this@command.check { failIf(latestReport == null) }
+                this@chatCommand.check { failIf(latestReport == null) }
 
                 latestReport?.let {
                     channel.createEmbed(it.toEmbed())
