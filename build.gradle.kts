@@ -36,6 +36,14 @@ dependencies {
     implementation(libs.logback)
     implementation(libs.logging)
     implementation(libs.sentry)
+
+    // Database
+    implementation(libs.exposed.core)
+    implementation(libs.exposed.dao)
+    implementation(libs.exposed.jdbc)
+    implementation(libs.exposed.javatime)
+    implementation(libs.postgresql)
+    implementation(libs.hikaricp)
 }
 
 application {
