@@ -1,6 +1,7 @@
 package dev.lysithea.franziska.extensions.ffxiv
 
 import com.kotlindiscord.kord.extensions.extensions.Extension
+import com.kotlindiscord.kord.extensions.extensions.chatCommand
 import dev.kord.common.Color
 import dev.kord.core.behavior.channel.createEmbed
 import dev.lysithea.franziska.ext.BLUE
@@ -10,12 +11,12 @@ import kotlinx.datetime.Clock
 import kotlinx.datetime.toJavaInstant
 import mu.KotlinLogging
 
-class XivServerTimeExtensions : Extension() {
+class XivServerTimeExtension : Extension() {
     override val name = "xiv-fashion-report"
     val logger = KotlinLogging.logger("xiv")
 
     override suspend fun setup() {
-        command {
+        chatCommand {
             name = "servertime"
             aliases = arrayOf("st", "et")
             description = "View server time & eorzea time"

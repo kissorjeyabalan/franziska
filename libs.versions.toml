@@ -3,7 +3,7 @@ detekt = "1.18.0"
 kotlin = "1.5.30"
 groovy = "3.0.8"
 
-kord-extensions = "1.4.4-RC4"
+kord-extensions = "1.5.1-SNAPSHOT"
 logging = "2.0.10"
 logback = "1.2.5"
 sentry = "5.1.2"
