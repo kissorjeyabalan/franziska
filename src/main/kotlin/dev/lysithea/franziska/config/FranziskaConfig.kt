@@ -3,35 +3,30 @@ package dev.lysithea.franziska.config
 import com.uchuhimo.konf.Config
 import com.uchuhimo.konf.source.yaml
 import dev.lysithea.franziska.config.spec.BotSpec
-import dev.lysithea.franziska.config.spec.MongoSpec
+import dev.lysithea.franziska.config.spec.DatabaseSpec
 import dev.lysithea.franziska.config.spec.SentrySpec
 import java.io.File
 
 class FranziskaConfig {
-    private var config = Config {
+    private var _config = Config {
         addSpec(BotSpec)
         addSpec(SentrySpec)
-        addSpec(MongoSpec)
+        addSpec(DatabaseSpec)
     }.from.yaml.file("config.yaml")
+
+    val self get() = _config
 
     init {
         if (File("config.dev.yaml").exists()) {
-            config = config.from.yaml.watchFile("config.dev.yaml")
+            _config = _config.from.yaml.watchFile("config.dev.yaml")
         }
     }
 
-    val environment: String get() = config[SentrySpec.environment]
-    val sentryDsn: String get() = config[SentrySpec.dsn]
+    val environment: String get() = self[SentrySpec.environment]
+    val sentryDsn: String get() = self[SentrySpec.dsn]
 
-    val discordToken: String get() = config[BotSpec.token]
-    val defaultPrefix: String get() = config[BotSpec.commandPrefix]
-
-    val mongoConnectionString: String get() =
-        "mongodb://${config[MongoSpec.username]}" +
-                ":${config[MongoSpec.password]}" +
-                "@${config[MongoSpec.host]}" +
-                ":${config[MongoSpec.port]}" +
-                "/${config[MongoSpec.db]}"
+    val discordToken: String get() = self[BotSpec.token]
+    val defaultPrefix: String get() = self[BotSpec.commandPrefix]
 }
 
 val config = FranziskaConfig()

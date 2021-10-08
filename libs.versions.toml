@@ -10,6 +10,10 @@ sentry = "5.1.2"
 
 konf = "0.23.0"
 
+exposed = "0.35.1"
+postgresql = "42.2.24"
+hikaricp = "5.0.0"
+
 [libraries]
 detekt = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
 groovy = { module = "org.codehaus.groovy:groovy", version.ref = "groovy" }
@@ -20,3 +24,9 @@ logging = { module = "io.github.microutils:kotlin-logging", version.ref = "loggi
 sentry = { module = "io.sentry:sentry-logback", version.ref = "sentry" }
 konf-core = { module = "com.uchuhimo:konf", version.ref = "konf" }
 konf-yaml = { module = "com.uchuhimo:konf-yaml", version.ref = "konf" }
+exposed-core = { module = "org.jetbrains.exposed:exposed-core", version.ref = "exposed" }
+exposed-dao = { module = "org.jetbrains.exposed:exposed-dao", version.ref = "exposed" }
+exposed-jdbc = { module = "org.jetbrains.exposed:exposed-jdbc", version.ref = "exposed" }
+exposed-javatime = { module = "org.jetbrains.exposed:exposed-java-time", version.ref = "exposed" }
+postgresql = { module = "org.postgresql:postgresql", version.ref = "postgresql" }
+hikaricp = { module = "com.zaxxer:HikariCP", version.ref = "hikaricp" }
