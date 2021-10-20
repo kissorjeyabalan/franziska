@@ -5,6 +5,7 @@ import com.uchuhimo.konf.source.yaml
 import dev.lysithea.franziska.config.spec.BotSpec
 import dev.lysithea.franziska.config.spec.DatabaseSpec
 import dev.lysithea.franziska.config.spec.SentrySpec
+import dev.lysithea.franziska.config.spec.XivSpec
 import java.io.File
 
 class FranziskaConfig {
@@ -12,6 +13,7 @@ class FranziskaConfig {
         addSpec(BotSpec)
         addSpec(SentrySpec)
         addSpec(DatabaseSpec)
+        addSpec(XivSpec)
     }.from.yaml.file("config.yaml")
 
     val self get() = _config
@@ -28,6 +30,7 @@ class FranziskaConfig {
     val discordToken: String get() = self[BotSpec.token]
     val defaultPrefix: String get() = self[BotSpec.commandPrefix]
     val testServer: Long get() = self[BotSpec.testServer]
+    val fflogsToken: String get() = self[XivSpec.fflogsToken]
 }
 
 val config = FranziskaConfig()
