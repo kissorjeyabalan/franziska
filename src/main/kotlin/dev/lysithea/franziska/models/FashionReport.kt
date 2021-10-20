@@ -53,7 +53,7 @@ data class FashionReport(
             text = "Posted on ${
                 LocalDateTime
                     .ofEpochSecond(createdAtSeconds, 0, ZoneOffset.UTC)
-                    .format("dd MM yyyy HH:mm")
+                    .format("dd/MM/yyyy HH:mm")
             }"
         }
     }
