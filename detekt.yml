@@ -618,7 +618,7 @@ style:
   TrailingWhitespace:
     active: true
   UnderscoresInNumericLiterals:
-    active: true
+    active: false
     acceptableDecimalLength: 5
   UnnecessaryAbstractClass:
     active: true
