@@ -13,6 +13,7 @@ konf = "0.23.0"
 exposed = "0.35.1"
 postgresql = "42.2.24"
 hikaricp = "5.0.0"
+graphql = "5.1.1"
 
 [libraries]
 detekt = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
@@ -30,3 +31,4 @@ exposed-jdbc = { module = "org.jetbrains.exposed:exposed-jdbc", version.ref = "e
 exposed-javatime = { module = "org.jetbrains.exposed:exposed-java-time", version.ref = "exposed" }
 postgresql = { module = "org.postgresql:postgresql", version.ref = "postgresql" }
 hikaricp = { module = "com.zaxxer:HikariCP", version.ref = "hikaricp" }
+graphql = { module = "com.expediagroup:graphql-kotlin-ktor-client", version.ref = "graphql"}

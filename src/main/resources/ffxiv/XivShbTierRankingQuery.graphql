@@ -1,0 +1,38 @@
+query XivShbTierRankingQuery($canonicalID: Int!) {
+    characterData {
+        character(id: $canonicalID) {
+            cloud_of_darkness: encounterRankings(encounterID: 73, difficulty: 101)
+            shadowkeeper: encounterRankings(encounterID: 74, difficulty: 101)
+            fatebreaker: encounterRankings(encounterID: 75, difficulty: 101)
+            edens_promise: encounterRankings(encounterID: 76, difficulty: 101)
+            oracle_of_darkness: encounterRankings(encounterID: 77, difficulty: 101)
+
+            ramuh: encounterRankings(encounterID: 69, difficulty: 101)
+            ifrit_garuda: encounterRankings(encounterID: 70, difficulty: 101)
+            idol_of_darkness: encounterRankings(encounterID: 71, difficulty: 101)
+            shiva: encounterRankings(encounterID: 72, difficulty: 101)
+
+            eden_prime: encounterRankings(encounterID: 65, difficulty: 101)
+            voidwalker: encounterRankings(encounterID: 66, difficulty: 101)
+            eden_leviathan: encounterRankings(encounterID: 67, difficulty: 101)
+            eden_titan: encounterRankings(encounterID: 68, difficulty: 101)
+
+            emerald_weapon_1: encounterRankings(encounterID: 1056)
+            emerald_weapon_2: encounterRankings(encounterID: 1055)
+            diamond_weapon: encounterRankings(encounterID: 1057)
+
+            ruby_weapon1: encounterRankings(encounterID: 1051)
+            ruby_weapon2: encounterRankings(encounterID: 1052)
+            emerald_weapon: encounterRankings(encounterID: 1053)
+            warrior_of_light: encounterRankings(encounterID: 1054)
+
+            titania: encounterRankings(encounterID: 1045)
+            innocence: encounterRankings(encounterID: 1046)
+            hades: encounterRankings(encounterID: 1049)
+
+            shiva_unreal: encounterRankings(encounterID: 3001)
+            titan_unreal: encounterRankings(encounterID: 3002)
+            leviathan_unreal: encounterRankings(encounterID: 3003)
+        }
+    }
+}

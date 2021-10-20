@@ -1,0 +1,23 @@
+query XivSbSavageRankingQuery($canonicalID: Int!) {
+    characterData {
+      character(id: $canonicalID) {
+        sb_chaos: encounterRankings(encounterID: 60)
+        sb_midgardsormr: encounterRankings(encounterID: 61)
+        sb_omega: encounterRankings(encounterID: 62)
+        sb_omega_mf: encounterRankings(encounterID: 63)
+        sb_final_omega: encounterRankings(encounterID: 64)
+
+        sb_phantom: encounterRankings(encounterID: 51)
+        sb_chadarnook: encounterRankings(encounterID: 52)
+        sb_guardian: encounterRankings(encounterID: 53)
+        sb_kefka: encounterRankings(encounterID: 54)
+        sb_god_kefka: encounterRankings(encounterID: 55)
+
+        sb_alte_roite: encounterRankings(encounterID: 42)
+        sb_catastrophe: encounterRankings(encounterID: 43)
+        sb_halicarnassus: encounterRankings(encounterID: 44)
+        sb_exdeath: encounterRankings(encounterID: 45)
+        sb_neo_exdeath: encounterRankings(encounterID: 46)
+      }
+    }
+  }

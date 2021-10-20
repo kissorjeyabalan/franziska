@@ -1,0 +1,36 @@
+query XivShbNormalRankingQuery($canonicalID: Int!) {
+    characterData {
+        character(id: $canonicalID) {
+            cloud_of_darkness: encounterRankings(encounterID: 73, difficulty: 100)
+            shadowkeeper: encounterRankings(encounterID: 74, difficulty: 100)
+            fatebreaker: encounterRankings(encounterID: 75, difficulty: 100)
+            edens_promise: encounterRankings(encounterID: 76, difficulty: 100)
+
+            ramuh: encounterRankings(encounterID: 69, difficulty: 100)
+            ifrit_garuda: encounterRankings(encounterID: 70, difficulty: 100)
+            idol_of_darkness: encounterRankings(encounterID: 71, difficulty: 100)
+            shiva: encounterRankings(encounterID: 72, difficulty: 100)
+
+            eden_prime: encounterRankings(encounterID: 65, difficulty: 100)
+            voidwalker: encounterRankings(encounterID: 66, difficulty: 100)
+            eden_leviathan: encounterRankings(encounterID: 67, difficulty: 100)
+            eden_titan: encounterRankings(encounterID: 68, difficulty: 100)
+
+            nier_3_1: encounterRankings(encounterID: 2032, difficulty: 100)
+            nier_3_2: encounterRankings(encounterID: 2033, difficulty: 100)
+            nier_3_3: encounterRankings(encounterID: 2034, difficulty: 100)
+            nier_3_4: encounterRankings(encounterID: 2035, difficulty: 100)
+            nier_3_5: encounterRankings(encounterID: 2036, difficulty: 100)
+
+            nier_2_1: encounterRankings(encounterID: 2024)
+            nier_2_2: encounterRankings(encounterID: 2025)
+            nier_2_3: encounterRankings(encounterID: 2026)
+            nier_2_4: encounterRankings(encounterID: 2027)
+
+            nier_1_1: encounterRankings(encounterID: 2020)
+            nier_1_2: encounterRankings(encounterID: 2021)
+            nier_1_3: encounterRankings(encounterID: 2022)
+            nier_1_4: encounterRankings(encounterID: 2023)
+        }
+    }
+}

@@ -1,3 +1,4 @@
+import com.expediagroup.graphql.plugin.gradle.tasks.GraphQLGenerateClientTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -9,6 +10,8 @@ plugins {
     id("com.github.jakemarsden.git-hooks")
     id("com.github.johnrengelman.shadow")
     id("io.gitlab.arturbosch.detekt")
+
+    id("com.expediagroup.graphql")
 }
 
 group = "dev.lysithea"
@@ -44,6 +47,8 @@ dependencies {
     implementation(libs.exposed.javatime)
     implementation(libs.postgresql)
     implementation(libs.hikaricp)
+
+    implementation(libs.graphql)
 }
 
 application {
@@ -96,4 +101,11 @@ tasks.processResources {
     dependsOn("generateBuildInfo")
     from("src/main/resources/build.properties")
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+val graphqlGenerateClient by tasks.getting(GraphQLGenerateClientTask::class) {
+    packageName.set("dev.lysithea.franziska.graphql.generated")
+    schemaFile.set(file("${project.projectDir}/src/main/resources/ffxiv/schema.graphql"))
+    serializer.set(com.expediagroup.graphql.plugin.gradle.config.GraphQLSerializer.KOTLINX)
+    queryFileDirectory.set(file("${project.projectDir}/src/main/resources/ffxiv/"))
 }

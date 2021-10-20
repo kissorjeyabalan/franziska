@@ -1,0 +1,23 @@
+query XivHwSavageRankingQuery($canonicalID: Int!) {
+    characterData {
+        character(id: $canonicalID) {
+            hw_refurbisher_6: encounterRankings(encounterID: 34)
+            hw_lamebrix: encounterRankings(encounterID: 35)
+            hw_cruise_chaser: encounterRankings(encounterID: 36)
+            hw_alexander_prime: encounterRankings(encounterID: 37)
+            hw_faust_z: encounterRankings(encounterID: 5008)
+
+            hw_ratfinx: encounterRankings(encounterID: 26)
+            hw_cuff_son: encounterRankings(encounterID: 27)
+            hw_quickthinx: encounterRankings(encounterID: 28)
+            hw_brute_justice: encounterRankings(encounterID: 29)
+            hw_hummelfaust: encounterRankings(encounterID: 5006)
+
+            hw_oppressor: encounterRankings(encounterID: 18)
+            hw_cuff_father: encounterRankings(encounterID: 19)
+            hw_living_liquid: encounterRankings(encounterID: 20)
+            hw_manipulator: encounterRankings(encounterID: 21)
+            hw_faust: encounterRankings(encounterID: 5001)
+        }
+    }
+}
