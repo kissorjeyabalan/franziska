@@ -27,6 +27,7 @@ class FranziskaConfig {
 
     val discordToken: String get() = self[BotSpec.token]
     val defaultPrefix: String get() = self[BotSpec.commandPrefix]
+    val testServer: Long get() = self[BotSpec.testServer]
 }
 
 val config = FranziskaConfig()
