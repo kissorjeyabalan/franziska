@@ -9,6 +9,7 @@ import dev.lysithea.franziska.config.config
 import dev.lysithea.franziska.config.spec.DatabaseSpec
 import dev.lysithea.franziska.database.entities.GuildSettings
 import dev.lysithea.franziska.database.tables.GuildTable
+import dev.lysithea.franziska.database.tables.XivUserTable
 import dev.lysithea.franziska.di._httpModules
 import dev.lysithea.franziska.di._xivModules
 import dev.lysithea.franziska.extensions.admin.SwapPrefixExtension
@@ -82,7 +83,10 @@ private suspend fun connectToDatabase() {
     Database.connect(dataSource)
 
     newSuspendedTransaction {
-        SchemaUtils.createMissingTablesAndColumns(GuildTable)
+        SchemaUtils.createMissingTablesAndColumns(
+            GuildTable,
+            XivUserTable
+        )
         exec("SELECT * FROM pg_extension WHERE extname = 'pg_trgm'") { rs ->
             require(rs.next()) { "pg_tgrm extension is required." }
         }
